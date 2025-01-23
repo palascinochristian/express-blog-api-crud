@@ -12,7 +12,6 @@ const index = (req, res) => {
   res.json(postFiltered);
 };
 
-
 //show
 const show = (req, res) => {
   const post = postsData.find((post) => post.id == req.params.id);
