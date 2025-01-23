@@ -60,7 +60,28 @@ const update = (req, res) => {
 
 //modify
 const modify = (req, res) => {
-  res.send("Modifica parziale post");
+  let post = postsData.find((elm) => elm.id == req.params.id);
+
+  if (!post) {
+    return res.status(404).json({
+      error: "Post not found",
+    });
+  }
+
+  if (req.body.title) {
+    post.title = req.body.title;
+  }
+  if (req.body.content) {
+    post.content = req.body.content;
+  }
+  if (req.body.image) {
+    post.image = req.body.image;
+  }
+  if (req.body.tags) {
+    post.tags = req.body.tags;
+  }
+
+  res.json(post);
 };
 
 //destroy
