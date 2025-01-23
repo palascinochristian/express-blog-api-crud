@@ -25,7 +25,19 @@ const show = (req, res) => {
 
 //store
 const store = (req, res) => {
-  res.send("Creazione nuovo post");
+  const id = Date.now();
+
+  const newPost = {
+    id,
+    title: req.body.title,
+    content: req.body.content,
+    image: req.body.image,
+    tags: req.body.tags,
+  };
+  console.log(req.body);
+  postsData.push(newPost);
+
+  res.status(201).json(newPost);
 };
 
 //update
