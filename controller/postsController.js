@@ -42,7 +42,20 @@ const store = (req, res) => {
 
 //update
 const update = (req, res) => {
-  res.send("Modifica post");
+  const post = postsData.find((elm) => elm.id == req.params.id);
+
+  if (!post) {
+    return res.status(404).json({
+      error: "Post not found",
+    });
+  }
+
+  post.title = req.body.title;
+  post.content = req.body.content;
+  post.image = req.body.image;
+  post.tags = req.body.tags;
+
+  res.json(post);
 };
 
 //modify
