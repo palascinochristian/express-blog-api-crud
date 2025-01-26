@@ -9,6 +9,8 @@ const index = (req, res) => {
     postFiltered = postFiltered.filter((post) => post.tags.includes(tags));
   }
 
+  //throw new Error("C'è stato un errore nel server!"); test error 500
+
   res.json(postFiltered);
 };
 
@@ -18,6 +20,7 @@ const show = (req, res) => {
   if (!post) {
     return res.status(404).json({
       error: "Post not found",
+      message: "Post non trovato",
     });
   }
   res.json(post);
