@@ -8,11 +8,7 @@ const port = 3001;
 
 app.use(express.static("public"));
 app.use(express.json());
-app.use(cors{
-  origin: "http://localhost:5173",
-
-});
-
+app.use(cors({ origin: "http://localhost:5173" })); //added cors for react-api repository
 
 app.use("/posts", posts);
 app.use(serverError); // Middleware per errori del server
